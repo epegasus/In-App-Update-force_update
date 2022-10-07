@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
                     if (appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) requestForUpdate(appUpdateManager, appUpdateInfo)
                 }
             }
+        }.addOnFailureListener {
+            showToast("Failed to fetch Data")
         }
     }
 
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity() {
     private val updateFlowResultLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             showToast("Updated Successfully")
+            checkIfUpdateInstalled()
         } else {
             showToast("Update Provoked")
         }
