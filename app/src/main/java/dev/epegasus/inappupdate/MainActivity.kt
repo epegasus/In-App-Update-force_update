@@ -17,7 +17,6 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import dev.epegasus.inappupdate.databinding.ActivityMainBinding
 
-
 private const val MY_REQUEST_CODE = 1000
 private const val TAG = "MyTag"
 
