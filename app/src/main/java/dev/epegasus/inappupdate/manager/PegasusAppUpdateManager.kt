@@ -82,7 +82,7 @@ class PegasusAppUpdateManager(private val activity: MainActivity) {
         }
         try {
             appUpdateInfo?.let { info ->
-                appUpdateManager.startUpdateFlowForResult(info, AppUpdateType.IMMEDIATE, starter, 100)
+                appUpdateManager.startUpdateFlowForResult(info, updateType, starter, 100)
             } ?: kotlin.run {
                 callback.invoke(false, "Failed to Launch Update Flow, try again later")
             }
