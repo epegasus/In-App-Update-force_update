@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkForUpdate() {
         pegasusAppUpdateManager.setUpdateType(AppUpdateType.IMMEDIATE)
         pegasusAppUpdateManager.checkForUpdate { isAvailable, message ->
-            showToast(message)
+            binding.tvText.text = message
             if (isAvailable) {
                 requestForUpdate()
             }
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestForUpdate() {
         pegasusAppUpdateManager.requestForUpdate { isUpdated, message ->
-            showToast(message)
+            binding.tvText.text = message
             if (isUpdated) {
                 // Proceed with Code...
                 Log.d("TAG", "requestForUpdate: Running App...")
