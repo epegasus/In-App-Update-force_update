@@ -56,8 +56,8 @@ class PegasusAppUpdateManager(private val activity: MainActivity) {
                 appUpdateInfo = it.result
                 when (appUpdateInfo?.updateAvailability()) {
                     UpdateAvailability.UNKNOWN -> callback.invoke(false, "Unknown Response")
-                    UpdateAvailability.UPDATE_NOT_AVAILABLE -> callback.invoke(false, "No Update Available")
-                    UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS -> callback.invoke(false, "Update is in Progress. Please Resume")
+                    UpdateAvailability.UPDATE_NOT_AVAILABLE -> callback.invoke(false, "No Updates Available")
+                    UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS -> callback.invoke(false, "Update is in Progress. Please Wait")
                     UpdateAvailability.UPDATE_AVAILABLE -> {
                         if (appUpdateInfo?.isUpdateTypeAllowed(updateType) == true) callback.invoke(true, "Update Available")
                         else callback.invoke(false, "This type of update is not available.")
