@@ -1,4 +1,4 @@
-# In-App-Update
+# In-App-Update (Force Update)
 
 Force Update for Android Applications 
 
