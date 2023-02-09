@@ -32,6 +32,14 @@ class PegasusAppUpdateManager(private val activity: MainActivity) {
     private var appUpdateInfo: AppUpdateInfo? = null
     private var callback: ((isUpdated: Boolean, message: String) -> Unit)? = null
 
+    private val updateFlowResultLauncher = weakReference.get()?.registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
+            checkIfUpdateInstalled()
+        } else {
+            callback?.invoke(false, "Update Cancelled by User")
+        }
+    }
+
     /**
      *    Types of AppUpdate:
      *     -> AppUpdateType.IMMEDIATE (1)
@@ -88,14 +96,6 @@ class PegasusAppUpdateManager(private val activity: MainActivity) {
             }
         } catch (ex: IntentSender.SendIntentException) {
             callback.invoke(false, ex.message.toString())
-        }
-    }
-
-    private val updateFlowResultLauncher = weakReference.get()?.registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-        if (result.resultCode == AppCompatActivity.RESULT_OK) {
-            checkIfUpdateInstalled()
-        } else {
-            callback?.invoke(false, "Update Cancelled by User")
         }
     }
 

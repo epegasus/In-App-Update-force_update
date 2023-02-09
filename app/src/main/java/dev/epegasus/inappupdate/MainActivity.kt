@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity() {
         pegasusAppUpdateManager.checkIfUpdateInstalled()
     }
 
-
     private fun showToast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
 
 }
